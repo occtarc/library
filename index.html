@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Library</title>
+  </head>
+  <body>
+    <header class="header">
+        <h1>Libreria Don Vato</h1>
+        <div class="add-book">
+            <p>Añadir libro</p>
+            <button type="button" id="add-book">+</button>
+        </div>
+    </header>
+    <main>
+        <h3>Mis libros: </h3>
+        <div class="book-container">
+
+        </div>
+    </main>
+    <div class="modal-newbook">
+        <form action="#">
+            <p>Agregar nuevo libro</p>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="autor" placeholder="Autor" required>
+            <input type="number" name="paginas" placeholder="Paginas" min="1" required>
+            <div class="check-read">
+                <label for="read">Lo leiste?</label>
+                <input type="checkbox" id="read">
+            </div>
+            <button id="enviar">Enviar</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <p>Creado por <a href="https://github.com/occtarc" target="_blank">Octavio Pendino</a></p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

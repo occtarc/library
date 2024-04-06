@@ -1,0 +1,275 @@
+/* ----- Reset ----- */
+
+:root{
+    --main-color: #0c4a6e;
+    --bg-header: #f9fafb;
+    --bg-container: #d1d5db;
+    --shadow-color: rgba(0,0,0,0.4);
+}
+
+html{
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before{
+    box-sizing: inherit;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+    background-color:var(--bg-container);
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+button{
+    border: none;
+}
+
+/* ----- Header ----- */
+.header{
+    padding-inline: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-header);
+    box-shadow: 2px 2px 5px var(--shadow-color);
+}
+
+.header h1{
+    font-size: 2.1rem;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    margin: 12px;
+}
+
+.header .add-book{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.add-book p{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.add-book button{
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #f9fafb;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, #38bdf8 20%,#082f49);
+    cursor: pointer;
+}
+
+/* ----- Contenedor Principal ----- */
+
+main{
+    padding: 20px;
+    width: 100vw;
+}
+
+main h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.book-container{
+    width: 90%;
+    margin: 0 auto;
+    padding-block: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* ----- Ventana Modal ----- */
+
+.modal-newbook{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* ----- Form New Book ----- */
+
+form{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e7e5e4;
+    border-radius: 10px;
+    text-align: center;
+}
+
+form p{
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+form input{
+    margin-block: 10px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+
+::placeholder{
+    font-weight: 700;
+    color: #a3a3a3;
+}
+
+form .check-read{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.3rem;
+}
+
+form .check-read input{
+    width: 20px;
+    height: 20px;
+}
+
+form button{
+    width: 100%;
+    padding-block: 10px;
+    border-radius:10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    background-image: linear-gradient(to right, #38bdf8 20%,#082f49);
+    color: #f9fafb;
+    cursor: pointer;
+}
+
+/* ----- Footer ----- */
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p{
+    margin: 10px;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.footer p a{
+    font-weight: 600;
+    text-decoration:underline;
+}
+
+/* ----- Card Book ----- */
+
+.card-book{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--bg-header);
+    box-shadow: 2px 2px 5px var(--shadow-color);
+}
+
+.card-book p{
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 5px;
+}
+
+.card-book .p-title{
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card-book .delete{
+    width: 50%;
+    padding-block: 10px;
+    margin-top: 15px;
+    border-radius:10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    background-color: #f87171;
+    color: #f9fafb;
+    cursor: pointer;
+}
+
+.card-book .read{
+    width: 50%;
+    padding-block: 10px;
+    margin-top: 15px;
+    border-radius:10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #f9fafb;
+    cursor: pointer;
+}
+
+/* ----- Header Media Query ----- */
+
+@media screen and (max-width: 650px){
+    .header{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header h1{
+        margin: 5px;
+        font-size: 1.7rem;
+    }
+
+    .header p{
+        font-size: 0.9rem;
+    }
+
+    .header button{
+        width: 30px;
+        height: 30px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 0;
+    }
+}
