@@ -45,6 +45,8 @@ button{
 
 /* ----- Header ----- */
 .header{
+    position: fixed;
+    width: 100%;
     padding-inline: 60px;
     display: flex;
     align-items: center;
@@ -87,6 +89,8 @@ button{
 
 main{
     padding: 20px;
+    padding-top: 80px;
+    padding-bottom: 40px;
     width: 100vw;
 }
 
@@ -175,6 +179,13 @@ form button{
     background-image: linear-gradient(to right, #38bdf8 20%,#082f49);
     color: #f9fafb;
     cursor: pointer;
+}
+
+.error{
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
 }
 
 /* ----- Footer ----- */
@@ -271,5 +282,9 @@ form button{
         font-size: 1.4rem;
         font-weight: 700;
         padding: 0;
+    }
+    
+    main{
+        padding-top: 110px;
     }
 }

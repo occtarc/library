@@ -2,7 +2,9 @@ const $buttonAdd = document.getElementById("add-book");
 const $buttonSubmit = document.getElementById("enviar");
 const $bookContainer = document.querySelector(".book-container");
 const $modalWindow = document.querySelector(".modal-newbook");
+const $spanError = document.querySelector(".error");
 const arrayInputs = document.querySelectorAll("form input");
+const inputsToArray = [...arrayInputs];
 const library = [];
 
 function Book (name,autor,pags,read){
@@ -43,7 +45,7 @@ function crearCardBook (newBook) {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Eliminar";
     deleteButton.classList.add("delete");
-    deleteButton.setAttribute("data-index", library.length - 1);
+    deleteButton.setAttribute("data-index", cardBook.getAttribute("data-position"));
     deleteButton.addEventListener("click", () => {
         eliminarCardBook(deleteButton.getAttribute("data-index"));
         cardBook.remove();
@@ -55,6 +57,7 @@ function crearCardBook (newBook) {
 function eliminarCardBook (botonId){
     library.splice(botonId,1);
     localStorage.setItem("Libreria", JSON.stringify(library));
+    console.log(library);
 }
 
 function cambiarEstadoLeido (boton, estado){
@@ -65,14 +68,28 @@ function cambiarEstadoLeido (boton, estado){
         boton.style.backgroundColor ="#fca5a5";
         boton.textContent = "No leido";
     }
+    localStorage.setItem("Libreria", JSON.stringify(library));
 }
 
 function cargarLibreriaDesdeLocalStorage() {
     const storedLibrary = localStorage.getItem("Libreria");
     if (storedLibrary) {
-        // Convertir la cadena JSON de localStorage de vuelta a un array
-        library.push(...JSON.parse(storedLibrary));
-        // Recorrer el array library para crear las tarjetas de cada libro
+        // Limpiar la biblioteca existente antes de cargar desde localStorage
+        library.length = 0;
+        const storedBooks = JSON.parse(storedLibrary);
+
+        // Recorrer cada libro almacenado en localStorage
+        storedBooks.forEach((storedBook) => {
+            // Verificar si el libro ya está en la biblioteca
+            const existingBookIndex = library.findIndex(book => book.name === storedBook.name);
+            
+            if (existingBookIndex === -1) {
+                // Si el libro no existe en la biblioteca, añadirlo
+                library.push(storedBook);
+            }
+        });
+
+        // Crear las tarjetas de cada libro en la biblioteca
         library.forEach((book) => {
             crearCardBook(book);
         });
@@ -85,9 +102,22 @@ $buttonAdd.addEventListener("click", () => {
 
 $buttonSubmit.addEventListener("click", (event) => {
     event.preventDefault();
+    $spanError.style.display = "none";
+    const hasEmptyInput = inputsToArray.some((input) => {
+        if(input.type === 'checkbox'){
+            return false;
+        }
+        return input.value === '';
+    });
+    if (hasEmptyInput) {
+        inputsToArray.forEach(input => console.log(input.value));
+        $spanError.style.display = "inline-block";
+        return;
+    }
     $modalWindow.style.display = "none";
     crearObjetoBook();
     arrayInputs.forEach((input) => input.value = '');
+    arrayInputs[3].checked = false;
     console.log(library);
 });
 
